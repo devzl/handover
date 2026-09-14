@@ -8,6 +8,26 @@ It follows the open [Agent Skills](https://agentskills.io) `SKILL.md`
 format, so it works across Claude Code, Claude (web/mobile), Cursor, OpenAI
 Codex, Gemini CLI, GitHub Copilot, and other tools that support the standard.
 
+## Why use it
+
+- **Cuts token spend on every new session.** Instead of an agent re-reading
+  your whole repo, git log, and prior chat to figure out where things stand,
+  it starts from a tight, purpose-built summary. Less re-derivation, fewer
+  wasted tokens, faster time to useful work.
+- **Full context for the next agent, not a vague recap.** The output
+  captures what's done, what's in flight, what's next, and what's actually
+  been validated, so a fresh agent (or a human) can pick up cold with zero
+  guesswork.
+- **No lost state between sessions.** Long-running projects survive context
+  limits, compaction, and handoffs between different tools or teammates
+  without anyone re-explaining the plan.
+- **Honest by construction.** It never claims a test passed or a fix
+  worked unless that was actually verified in the conversation, so the next
+  agent isn't working from a false starting point.
+- **Works everywhere, zero lock-in.** One `SKILL.md`, same behavior across
+  every Agent-Skills-compatible tool, and it degrades gracefully to a plain
+  prompt if a tool doesn't support skills at all.
+
 ## What it does
 
 When invoked, the skill:
