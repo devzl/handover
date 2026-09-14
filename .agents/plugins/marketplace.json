@@ -1,0 +1,16 @@
+{
+  "name": "handover",
+  "interface": {
+    "displayName": "Handover"
+  },
+  "plugins": [
+    {
+      "name": "handover",
+      "source": {
+        "source": "local",
+        "path": "./plugins/handover"
+      },
+      "description": "Produce a clean, accurate, self-contained project handover so the next session (human or agent) can pick up cold."
+    }
+  ]
+}

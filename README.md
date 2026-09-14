@@ -108,8 +108,20 @@ cp -r plugins/handover/skills/handover .cursor/skills/handover
 
 ### OpenAI Codex / Codex CLI
 
-Codex reads skills from `.codex/skills/` (project) or `~/.codex/skills/`
-(global):
+This repo also ships a Codex-compatible plugin marketplace
+(`.agents/plugins/marketplace.json`), so you can add it and install the
+plugin the same way as Claude Code:
+
+```bash
+codex plugin marketplace add devzl/handover
+codex plugin add handover@handover
+```
+
+Or use the interactive plugin browser: run `/plugins` inside Codex CLI,
+add the marketplace, then install `handover`.
+
+Codex also reads plain skill directories directly from `.codex/skills/`
+(project) or `~/.codex/skills/` (global), if you'd rather skip plugins:
 
 ```bash
 mkdir -p .codex/skills
