@@ -6,7 +6,8 @@ session (human or agent) can pick up cold.
 
 It follows the open [Agent Skills](https://agentskills.io) `SKILL.md`
 format, so it works across Claude Code, Claude (web/mobile), Cursor, OpenAI
-Codex, Gemini CLI, GitHub Copilot, and other tools that support the standard.
+Codex, Gemini CLI, GitHub Copilot, OpenCode, Kiro, Windsurf, and other
+tools that support the standard.
 
 ## Why use it
 
@@ -161,6 +162,58 @@ Or copy the skill manually into `.github/skills/`, `.claude/skills/`, or
 mkdir -p .github/skills
 cp -r plugins/handover/skills/handover .github/skills/handover
 ```
+
+### Gemini CLI
+
+Gemini CLI implements the Agent Skills standard directly and recognizes
+`.agents/skills/`, which this repo already provides (a symlink to the
+canonical skill), so a straight install works:
+
+```bash
+gemini skills install https://github.com/devzl/handover
+```
+
+Or copy manually into `.gemini/skills/` (project) or `~/.gemini/skills/`
+(global):
+
+```bash
+mkdir -p .gemini/skills
+cp -r plugins/handover/skills/handover .gemini/skills/handover
+```
+
+### OpenCode
+
+OpenCode discovers `SKILL.md` from `.agents/skills/`, `.claude/skills/`,
+and its own `.opencode/skills/`. Since this repo ships `.agents/skills/`,
+just point OpenCode at the repo, or copy directly:
+
+```bash
+mkdir -p .opencode/skills
+cp -r plugins/handover/skills/handover .opencode/skills/handover
+```
+
+### Kiro
+
+Kiro supports the Agent Skills standard and can import a skill straight
+from a public GitHub URL:
+
+```text
+Kiro -> Import a skill -> https://github.com/devzl/handover
+```
+
+Or copy manually into `.kiro/skills/` (project) or `~/.kiro/skills/`
+(global):
+
+```bash
+mkdir -p .kiro/skills
+cp -r plugins/handover/skills/handover .kiro/skills/handover
+```
+
+### Windsurf
+
+Windsurf works as a compatibility target through the same `.agents/skills/`
+convention, or by copying the skill directly into whatever skills
+directory your Windsurf setup scans for `SKILL.md` files.
 
 ### Any other Agent-Skills-compatible tool
 
