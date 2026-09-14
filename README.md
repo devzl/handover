@@ -41,22 +41,50 @@ When invoked, the skill:
    proposed work, and never claims validation that wasn't actually run.
 4. Produces a continuation prompt that is immediately actionable on its own.
 
-See [`skills/handover/SKILL.md`](skills/handover/SKILL.md) for the exact
-instructions the agent follows.
+See [`plugins/handover/skills/handover/SKILL.md`](plugins/handover/skills/handover/SKILL.md)
+for the exact instructions the agent follows.
 
 ## Install
 
-### Claude Code
+### Claude Code (plugin marketplace, recommended)
+
+This repo is also a Claude Code plugin marketplace, so you can add it and
+install the plugin directly:
+
+```bash
+/plugin marketplace add devzl/handover
+/plugin install handover@handover
+```
+
+Then invoke with `/handover` (namespaced as
+`/handover:handover` if you have another skill named `handover`).
+
+To make this available to your whole team, add it to `.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "handover": {
+      "source": { "source": "github", "repo": "devzl/handover" }
+    }
+  },
+  "enabledPlugins": {
+    "handover@handover": true
+  }
+}
+```
+
+### Claude Code (manual skill copy)
 
 Copy the skill folder into your personal or project skills directory:
 
 ```bash
 # personal (all projects)
-git clone https://github.com/<you>/handover.git /tmp/handover
-cp -r /tmp/handover/skills/handover ~/.claude/skills/handover
+git clone https://github.com/devzl/handover.git /tmp/handover
+cp -r /tmp/handover/plugins/handover/skills/handover ~/.claude/skills/handover
 
 # project-local
-cp -r /tmp/handover/skills/handover .claude/skills/handover
+cp -r /tmp/handover/plugins/handover/skills/handover .claude/skills/handover
 ```
 
 Optionally add a shortcut command, e.g. `~/.claude/commands/handover.md`:
@@ -75,7 +103,7 @@ your project's `.cursor/skills/` directory:
 
 ```bash
 mkdir -p .cursor/skills
-cp -r skills/handover .cursor/skills/handover
+cp -r plugins/handover/skills/handover .cursor/skills/handover
 ```
 
 ### OpenAI Codex / Codex CLI
@@ -85,20 +113,21 @@ Codex reads skills from `.codex/skills/` (project) or `~/.codex/skills/`
 
 ```bash
 mkdir -p .codex/skills
-cp -r skills/handover .codex/skills/handover
+cp -r plugins/handover/skills/handover .codex/skills/handover
 ```
 
 ### Any other Agent-Skills-compatible tool
 
-Copy `skills/handover/` into whatever skills directory your tool scans for
-`SKILL.md` files; the format is identical everywhere. Check your tool's
-docs for the exact path if it isn't listed above.
+Copy `plugins/handover/skills/handover/` into whatever skills directory
+your tool scans for `SKILL.md` files; the format is identical everywhere.
+Check your tool's docs for the exact path if it isn't listed above.
 
 ### No skills support? Use it as a plain prompt
 
 If your tool doesn't support Agent Skills at all, just paste the body of
-[`skills/handover/SKILL.md`](skills/handover/SKILL.md) (everything below the
-frontmatter) directly into your prompt or system instructions.
+[`plugins/handover/skills/handover/SKILL.md`](plugins/handover/skills/handover/SKILL.md)
+(everything below the frontmatter) directly into your prompt or system
+instructions.
 
 ## License
 

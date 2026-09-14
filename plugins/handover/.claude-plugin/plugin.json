@@ -1,0 +1,12 @@
+{
+  "name": "handover",
+  "description": "Produce a clean, accurate, self-contained project handover so the next session (human or agent) can pick up cold.",
+  "version": "1.0.0",
+  "author": {
+    "name": "devzl"
+  },
+  "homepage": "https://github.com/devzl/handover",
+  "repository": "https://github.com/devzl/handover",
+  "license": "MIT",
+  "keywords": ["handover", "continuation", "context", "productivity"]
+}

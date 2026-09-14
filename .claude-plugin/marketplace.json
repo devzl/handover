@@ -1,0 +1,15 @@
+{
+  "name": "handover",
+  "owner": {
+    "name": "devzl",
+    "url": "https://github.com/devzl"
+  },
+  "description": "Marketplace for the handover Agent Skill: clean, self-contained project handovers for the next session.",
+  "plugins": [
+    {
+      "name": "handover",
+      "source": "./plugins/handover",
+      "description": "Produce a clean, accurate, self-contained project handover so the next session (human or agent) can pick up cold."
+    }
+  ]
+}
