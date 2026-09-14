@@ -98,13 +98,21 @@ Then invoke with `/handover` (or your own alias, e.g. `/h`, `/hd`).
 
 ### Cursor
 
-Cursor supports the Agent Skills format directly: drop the folder into
-your project's `.cursor/skills/` directory:
+Cursor supports the open [Agent Plugins](https://agent-plugins.org) standard
+directly, and `plugins/handover/plugin.json` in this repo follows that
+schema, so `plugins/handover/` is a portable Cursor plugin as-is. Cursor's
+own marketplace is submission-based (Git repo, manual review), so for local
+or team use, point Cursor at the plugin folder, or just drop the skill in
+directly:
 
 ```bash
 mkdir -p .cursor/skills
 cp -r plugins/handover/skills/handover .cursor/skills/handover
 ```
+
+Cursor also discovers skills from `.claude/skills/` and `.codex/skills/`
+for compatibility, so the manual copies above under those tools' sections
+work for Cursor too.
 
 ### OpenAI Codex / Codex CLI
 
@@ -126,6 +134,32 @@ Codex also reads plain skill directories directly from `.codex/skills/`
 ```bash
 mkdir -p .codex/skills
 cp -r plugins/handover/skills/handover .codex/skills/handover
+```
+
+### GitHub Copilot
+
+Copilot CLI reads `.claude-plugin/marketplace.json` natively, so this
+repo's existing Claude Code marketplace works for Copilot too, with the
+same install commands:
+
+```bash
+copilot plugin marketplace add devzl/handover
+copilot plugin install handover@handover
+```
+
+Copilot also has `gh skill` (public preview) for installing a skill
+directly from a repo without going through a plugin marketplace:
+
+```bash
+gh skill install devzl/handover handover
+```
+
+Or copy the skill manually into `.github/skills/`, `.claude/skills/`, or
+`.agents/skills/` (all three are recognized):
+
+```bash
+mkdir -p .github/skills
+cp -r plugins/handover/skills/handover .github/skills/handover
 ```
 
 ### Any other Agent-Skills-compatible tool
