@@ -45,6 +45,18 @@ When invoked, the skill:
 See [`plugins/handover/skills/handover/SKILL.md`](plugins/handover/skills/handover/SKILL.md)
 for the exact instructions the agent follows.
 
+## How to use
+
+Once installed, just type:
+
+```
+/handover
+```
+
+That's it. The agent writes a clean, structured handover to the chat, ready
+to copy and paste into your next session, or into a different tool
+entirely. Paste it as the first message and the next agent picks up cold.
+
 ## Install
 
 ### Claude Code (plugin marketplace, recommended)
